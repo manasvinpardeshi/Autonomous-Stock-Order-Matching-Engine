@@ -1,39 +1,67 @@
-# Autonomous-Stock-Order-Matching-Engine
-Match buy/sell orders using price-time priority, simulate market microstructure.
+AUTONOMOUS STOCK ORDER MATCHING ENGINE (MINI PROJECT)
+OVERVIEW
 
- Autonomous Stock Order Matching Engine (Mini Project)
-Overview
+This project simulates the core of a stock exchange — the Order Matching Engine.
+It continuously receives buy and sell orders, matches compatible ones based on price-time priority, and executes trades.
+This is the fundamental mechanism used by real-world exchanges such as NSE, NYSE, and Binance.
 
-This project simulates the core of a stock exchange — the Order Matching Engine — which continuously receives buy and sell orders, matches them based on price-time priority, and executes trades.
+The project demonstrates efficient use of data structures to implement a simplified but realistic market microstructure.
 
-It models how real-world exchanges like NSE, NYSE, or Binance process orders at high speed using efficient data structures and matching algorithms.
+FEATURES
 
-Features
+PRICE-TIME PRIORITY MATCHING
 
-Price-Time Priority Matching
+Buy orders are matched with the lowest available sell price.
 
-Buy orders match with the lowest sell price and vice versa.
+Sell orders are matched with the highest available buy price.
 
-Earlier orders at the same price have higher priority (FIFO).
+For orders at the same price, earlier timestamps get priority (FIFO).
 
-Order Types
+ORDER TYPES
 
-Limit orders (price-specified).
+Limit Orders (price-specified).
 
-Optional: Market orders.
+Optional: Market Orders (for immediate execution).
 
-Efficient Data Structure Design
+EFFICIENT DATA STRUCTURE DESIGN
 
-BST / Array for sorted price levels.
+BST or Array for sorted price levels.
 
-Linked List / Queue for FIFO orders at each price.
+Linked List or Queue for FIFO at each price level.
 
-HashMap for fast lookup of orders/trades.
+HashMap for fast order/trade lookup.
 
-Trade Logging and Analytics
+TRADE LOG AND ANALYTICS
 
-Chronological record of executed trades.
+Maintains chronological record of executed trades.
 
-Fast retrieval of trades using HashMap.
+Allows O(1) trade lookup by ID.
 
-Basic analytics: total traded volume, number of trades, etc.
+Basic reporting (total volume, number of trades, etc.).
+
+WORKFLOW
+
+ORDER CREATION
+The Market Simulator generates BUY and SELL orders containing price, quantity, type, and timestamp.
+
+ORDER SUBMISSION
+Orders are passed to the Order Matching Engine for processing.
+
+MATCHING LOGIC
+
+A BUY order matches if its price is greater than or equal to the best SELL price.
+
+A SELL order matches if its price is less than or equal to the best BUY price.
+
+Otherwise, the order is stored in the Order Book.
+
+TRADE EXECUTION
+
+Quantities are updated and fully matched orders are removed from the order book.
+
+Partial fills are supported.
+
+Each trade is recorded in the Trade Log.
+
+TRADE LOG DISPLAY
+The Trade Log displays all executed trades and analytics such as total volume and number of trades.
