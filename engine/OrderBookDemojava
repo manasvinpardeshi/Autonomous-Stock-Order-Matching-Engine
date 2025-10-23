@@ -1,0 +1,30 @@
+package engine;
+
+import DS_P.Order;
+
+// 🧠 This is your test driver (main file for Person 2)
+public class Main {
+    public static void main(String[] args) {
+        // Create an instance of your OrderBook
+        OrderBookBST orderBook = new OrderBookBST();
+
+        // Create sample orders (mock data)
+        Order buyOrder1 = new Order(1, "BUY", 105.0, 10, System.currentTimeMillis());
+        Order buyOrder2 = new Order(2, "BUY", 102.0, 15, System.currentTimeMillis());
+        Order sellOrder1 = new Order(3, "SELL", 110.0, 20, System.currentTimeMillis());
+        Order sellOrder2 = new Order(4, "SELL", 108.0, 5, System.currentTimeMillis());
+
+        // Add the orders to your tree
+        orderBook.addOrder(buyOrder1);
+        orderBook.addOrder(buyOrder2);
+        orderBook.addOrder(sellOrder1);
+        orderBook.addOrder(sellOrder2);
+
+        // Print the best (top) buy and sell
+        System.out.println("\n🏆 Best BUY order: " + orderBook.peekBestBuy());
+        System.out.println("💰 Best SELL order: " + orderBook.peekBestSell());
+
+        // Print all orders in BST
+        orderBook.displayAllOrders();
+    }
+}
