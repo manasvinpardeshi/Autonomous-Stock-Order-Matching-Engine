@@ -49,6 +49,13 @@ public class Order
         return timestamp;
     }
 
+    public void setQuantity(int newQuantity) {
+        if (newQuantity < 0) {
+            throw new IllegalArgumentException("Quantity cannot be negative");
+        }
+        this.quantity = newQuantity;
+    }
+    
     // --- Optional: nice string for printing ---
     @Override
     public String toString() {
